@@ -1,5 +1,5 @@
 import React from 'react';
-import PropertySearch from './components/PropertySearch/index'
+import LandingPage from './components/LandingPage/LandingPage'
 
 export default class App extends React.Component {
   constructor(){
@@ -9,7 +9,7 @@ export default class App extends React.Component {
   render() {
       return(
         <div>
-            <PropertySearch />
+            <LandingPage />
         </div>
       )
   }
