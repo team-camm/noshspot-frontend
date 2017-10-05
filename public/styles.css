@@ -2,7 +2,6 @@
     box-sizing: border-box;
   }
 
-
 .mainBar { 
     display: block;
         width: 100%;
@@ -14,6 +13,10 @@
         line-height: 40px;
         z-index: 1;
     }
+
+/* #navDiv{
+    margin-bottom: 68px;
+} */
     
     /* Links inside the navbar */
     .mainBar #logo {
@@ -118,7 +121,8 @@
       #marketingHolder{
           position: fixed;
           top: 60%;
-          width: 100%
+          width: 100%;
+          z-index: 1;
       }
 
       #marketingText{
