@@ -25,8 +25,8 @@ export default class LandingPage extends React.Component {
     return (
       <div>
         <NavBar />
-        <div id="marketingHolder">
-          <h3 id="marketingText"> Nosh, eat food enthusiastically or greedily. </h3>
+        <div id='marketingHolder'>
+          <h3 id='marketingText'> Nosh, eat food enthusiastically or greedily. </h3>
         </div>
         <main>
           <div id="inputGroup">
