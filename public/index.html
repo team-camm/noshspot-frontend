@@ -11,6 +11,16 @@
     </head>
     <body>
         <div id='root'></div>
+        <script>
+        var placeSearch, autocomplete;
+        function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('locationSearch')),
+            {types: ['geocode']});
+        }
+        </script>
         <script src="bundle.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbhiwfH-XcQPTolVpNDse-PppcJWBjDI4&libraries=places&callback=initAutocomplete"
+        async defer></script>
     </body>
 </html>
