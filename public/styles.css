@@ -1,0 +1,116 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+
+.mainBar { 
+    display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        background-color: rgb(128, 10, 10);
+        top: 0;
+        position: fixed;
+        line-height: 40px;
+        z-index: 1;
+    }
+    
+    /* Links inside the navbar */
+    .mainBar #logo {
+        color: #f2f2f2;
+        float: left;
+        padding: 14px 16px;
+        text-decoration: none;
+        vertical-align: middle;
+        font-family: 'Viga';        
+    }
+    
+    @import url('https://fonts.googleapis.com/css?family=Viga');
+    
+    .mainBar #title {
+        display: inline-block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: 'Viga';
+        font-size: 30px;
+    }
+    
+    .mainBar #login {
+        color: #f2f2f2;
+        float: right;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: 'Viga';
+        vertical-align: middle;        
+    }
+
+
+    #inputGroup{
+        display: flex;
+        flex-wrap: nowrap;
+        width: 700px;
+        box-sizing: border-box;        
+    }
+    
+    #locationSearch{
+        box-sizing: border-box;
+        flex: 8;     
+        height: 60px;
+        font-size: 30px;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 3px solid white;
+        color: white;
+        border-radius: 3px;
+        border-right: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        z-index: 1;
+        padding-left: 15px;
+     }
+
+     #locationSearch::placeholder{
+        color: rgba(255, 255, 255, 0.6)
+     }
+
+     main{
+         display: flex;
+         height: calc(100vh);
+         justify-content: center;
+         align-items: center;
+         background: url("https://lh3.googleusercontent.com/Fab2lbEnV03nUujoV5_wFCghanU3dSrNaa-uxVj7nZSNOcFUI508F6yoODbbEpNVRqw=h900") no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+     }
+
+
+      main::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      input:focus{
+          outline: none;
+      }
+
+      #go{
+        flex: 1;
+        line-height: 50px;
+        font-size: 30px;
+        background-color: rgba(250, 218, 181, .3);
+        border: 3px solid white;
+        color: white;
+        border-radius: 3px;
+        text-align: center;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        z-index: 1;
+      }
