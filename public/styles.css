@@ -56,6 +56,13 @@
         width: 700px;
         box-sizing: border-box;        
     }
+
+    #restaurantGroup{
+        display: flex;
+        flex-wrap: nowrap;
+        box-sizing: border-box;  
+
+    }
     
     #locationSearch{
         box-sizing: border-box;
@@ -89,7 +96,19 @@
          background-size: cover;
      }
 
+     #restaurant{
+        display: flex;
+        height: calc(100vh);
+        justify-content: center;
+        align-items: center;
+        background: url('http://santabarbaraca.com/content/uploads/2015/08/restaurants-santa-barbara.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 
+     /* https://images-na.ssl-images-amazon.com/images/I/8107ZR0LmzL.jpg */
       main::before{
         content: '';
         position: absolute;
@@ -125,7 +144,14 @@
           z-index: 1;
       }
 
-      #marketingText{
+      #restaurantHolder{
+        position: fixed;
+        top: 12%;
+        width: 100%;
+        z-index: 1;
+    }
+
+      #restaurantText{
           text-align: center;
           color: white;
       }
