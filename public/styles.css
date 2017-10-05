@@ -131,17 +131,15 @@
           color: white;
       }
 
+    /* Account Info */
+
       #accSettings{
-        margin-left: 7%;
-        margin-top: 9%;
-        text-align: center;
-        
+        text-align: left;
       }
 
       #deliveryHistory{
-        margin-left: 7%;
-        margin-top: 15%;
-        text-align: center;
+
+        text-align: left;
         
       }
 
@@ -150,9 +148,7 @@
       }
 
       #deliveryHistory:hover{
-          background-color: lightgrey;
-          border-radius: 4px;
-
+        text-decoration: underline;
       }
 
       #accSettingsDisplay{
