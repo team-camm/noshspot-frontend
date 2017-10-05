@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../NavBar/NavBar';
 
 export default class LandingPage extends React.Component {
   constructor(props) {
@@ -7,18 +8,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <nav className="mainBar clearfix">
-          <a id="logo" href="#">Logo</a>
-          <a id="title" href="#"><strong>NoshSpot</strong></a>
-          <a id="login" href="#">Login</a>
-        </nav>
-        <main>
-          <div id="inputGroup">
-            <input placeholder="Enter Location..." type="text" id="locationSearch" />
-            <span id="go">Go</span>
-          </div>
-
-        </main>
+        <NavBar />
         <div id="marketingHolder">
           <h3 id="marketingText"> Nosh, eat food enthusiastically or greedily. </h3>
         </div>
