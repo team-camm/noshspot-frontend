@@ -129,3 +129,8 @@
           text-align: center;
           color: white;
       }
+
+
+.row {
+    padding-bottom: 1em;
+}
