@@ -8,6 +8,7 @@ import Confirmation from './components/Confirmation/Confirmation';
 import AccountInfo from './components/AccountInfo/AccountInfo'
 import UserRegistration from './components/Registration/UserRegistration';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
+import RestaurantRegistration from './components/RestaurantRegistration/RestaurantRegistration';
 
 
 export default class App extends React.Component {
@@ -24,6 +25,7 @@ export default class App extends React.Component {
             <Route path='/account-info' component={ AccountInfo }/>
             <Route path='/registration' component={ UserRegistration }/>
             <Route path='/restaurant' component={ RestaurantLanding }/>
+            <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
 
           </div>
         </Router>
