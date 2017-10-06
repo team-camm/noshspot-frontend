@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
 
-export default class UserRegistration extends React.Component {
+export default class RestaurantRegistration extends React.Component {
   constructor(props) {
     super(props);
   }
