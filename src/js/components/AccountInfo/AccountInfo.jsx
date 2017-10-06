@@ -1,10 +1,59 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import {
+    updateAccountInfo,
+    updateEmail,
+    updatePassword,
+    updatePhone,
+    updateAddress
+} from './accountInfoActions';
 
 export default class Confirmation extends React.Component {
     constructor(props) {
         super(props);
+
+        this.updateAccount = this.updateAccount.bind(this);
+        this.changePassword = this.changePassword.bind(this);
+        this.changeEmail = this.changeEmail.bind(this);
+        this.changePhone = this.changePhone.bind(this);
+        this.changeAddress = this.changeAddress.bind(this);
     }
+
+    changeEmail(event) {
+        const {dispatch} = this.props;
+        const value = event.target.value;
+        dispatch(updateEmail(value));
+    }
+
+    changePassword(event) {
+        const {dispatch} = this.props;
+        const value = event.target.value;
+        dispatch(updatePassword(value));
+    }
+
+    changePhone(event) {
+        const {dispatch} = this.props;
+        const value = event.target.value;
+        dispatch(updatePhone(value));
+    }
+
+    changeAddress(event) {
+        const {dispatch} = this.props;
+        const value = event.target.value;
+        dispatch(updateAddress(value));
+    }
+
+    updateAccount(){
+        const {dispatch, email, password, phone, address, id } = this.props;
+        const info = {
+            email,
+            password,
+            phone,
+            address
+        }
+        dispatch(updateAccountInfo(info, id))
+    }
+    
     render() {
         return (
             <div>
@@ -27,27 +76,28 @@ export default class Confirmation extends React.Component {
                                 <div style={{ marginBottom: '3%' }} className="form-group row">
                                     <label htmlFor="example-text-input" className="col-2 col-form-label">Email:</label>
                                     <div className="col-10">
-                                        <input className="form-control" type="text" id="" />
+                                        <input className="form-control" onChange={ this.changeEmail } type="text" id="" />
                                     </div>
                                 </div>
                                 <div style={{ marginBottom: '3%' }} className="form-group row">
                                     <label htmlFor="example-text-input" className="col-2 col-form-label">Password:</label>
                                     <div className="col-10">
-                                        <input className="form-control" type="text" id="" />
+                                        <input className="form-control" onChange={ this.changePassword } type="text" id="" />
                                     </div>
                                 </div>
                                 <div style={{ marginBottom: '3%' }} className="form-group row">
                                     <label htmlFor="example-text-input" className="col-2 col-form-label">Phone Number:</label>
                                     <div className="col-10">
-                                        <input className="form-control" type="text" id="" />
+                                        <input className="form-control" onChange={ this.changePhone } type="text" id="" />
                                     </div>
                                 </div>
                                 <div style={{ marginBottom: '3%' }} className="form-group row">
-                                    <label htmlFor="example-text-input" className="col-2 col-form-label">Adress:</label>
+                                    <label htmlFor="example-text-input" className="col-2 col-form-label">Address:</label>
                                     <div className="col-10">
-                                        <input className="form-control" type="text" id="" />
+                                        <input className="form-control" onChange={ this.changeAddress } type="text" id="" />
                                     </div>
                                 </div>
+                                <button className='btn' style={{ 'backgroundColor': 'rgb(128, 10, 10)', 'color': 'white' }} onClick={ this.updateAccount }>Submit Changes</button>
                             </div>
                         </div>
                     </div>

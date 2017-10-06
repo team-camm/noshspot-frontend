@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import propertySearchReducer from './components/PropertySearch/propertySearchReducer';
+import landingPageReducer from './components/LandingPage/landingPageReducer';
+import accountInfoReducer from './components/AccountInfo/accountInforeducer';
 
 const rootReducer = combineReducers({
-    search: propertySearchReducer
+    landingPage: landingPageReducer,
+    accountInfo: accountInfoReducer
 })
 
 export default rootReducer;

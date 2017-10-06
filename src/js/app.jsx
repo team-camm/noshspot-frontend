@@ -3,9 +3,9 @@ import {
   HashRouter as Router, 
   Route 
 } from 'react-router-dom';
-import LandingPage from './components/LandingPage/LandingPage';
+import LandingPage from './components/LandingPage/index';
 import Confirmation from './components/Confirmation/Confirmation';
-import AccountInfo from './components/AccountInfo/AccountInfo'
+import AccountInfo from './components/AccountInfo/index'
 import UserRegistration from './components/Registration/UserRegistration';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
 import CustomerMenu from './components/CustomerMenu/CustomerMenu';
