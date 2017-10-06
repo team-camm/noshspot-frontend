@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>NoshSpot</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -10,6 +10,16 @@
     </head>
     <body>
         <div id='root'></div>
+        <script>
+        var placeSearch, autocomplete;
+        function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('locationSearch')),
+            {types: ['geocode']});
+        }
+        </script>
         <script src="bundle.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbhiwfH-XcQPTolVpNDse-PppcJWBjDI4&libraries=places&callback=initAutocomplete"
+        async defer></script>
     </body>
 </html>
