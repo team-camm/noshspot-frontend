@@ -48,7 +48,7 @@
         font-family: 'Viga';
         vertical-align: middle;        
     }
-
+/* Landing Page */
 
     #inputGroup{
         display: flex;
@@ -96,6 +96,18 @@
          -o-background-size: cover;
          background-size: cover;
      }
+
+     #goToRestaurantPage{
+        position: fixed;
+        top: 94%;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        font-size: 1.25em;
+     }
+
+     /* Restaurant Landing */
 
      #restaurant{
         display: flex;
