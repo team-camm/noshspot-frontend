@@ -18,7 +18,7 @@ export default class UserRegistration extends React.Component {
             <div className='col-6'>
               <h2>Log In</h2>
               <p />
-              <div className='container' style={{ 'padding': '1em'}}>
+              <div className='container' style={{ 'padding': 1 + 'em'}}>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
                   <div className="col-10">
@@ -42,7 +42,7 @@ export default class UserRegistration extends React.Component {
             <div className='col-6'>
               <h2> Sign Up </h2>
               <p />
-              <div className='container' style={{ 'padding': '1em'}}>
+              <div className='container' style={{ 'padding': 1 + 'em'}}>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
                   <div className="col-10">
@@ -76,8 +76,8 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row" >
                   <label htmlFor="termsAndConditions" className="col-2 col-form-label">Terms & Conditions</label>
                   <div className="col-10">
-                    <div style={{ "height":"15em", "border":"1px solid #ccc", "overflow":"auto" }}>
-                      <div style='{{ "padding-left": "1em"}}'>
+                    <div style={{ "height":15 + "em", "border":"1px solid #ccc", "overflow":"auto" }}>
+                      <div style={{ "paddingLeft": 1 + "em"}}>
                         <p>The standard Lorem Ipsum passage, used since the 1500s</p>
 
                         <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
