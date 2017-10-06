@@ -9,6 +9,7 @@ import AccountInfo from './components/AccountInfo/AccountInfo'
 import UserRegistration from './components/Registration/UserRegistration';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
 import CustomerMenu from './components/CustomerMenu/CustomerMenu';
+import RestaurantRegistration from './components/RestaurantRegistration/RestaurantRegistration';
 
 
 export default class App extends React.Component {
@@ -26,7 +27,7 @@ export default class App extends React.Component {
             <Route path='/registration' component={ UserRegistration }/>
             <Route path='/restaurant' component={ RestaurantLanding }/>
             <Route path='/restaurantmenu' component={CustomerMenu} /> 
-
+            <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
 
           </div>
         </Router>
