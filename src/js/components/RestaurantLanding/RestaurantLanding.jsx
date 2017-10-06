@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
 
-export default class LandingPage extends React.Component {
+
+export default class RestaurantLanding extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -9,6 +10,7 @@ export default class LandingPage extends React.Component {
     return (
       <div>
         <NavBar />
+
         <div className='text-center col-sm-6 offset-sm-3 rounded'style={{backgroundColor: 'rgba(0, 0, 0, .5', padding: '2%'}}id='restaurantHolder'>
           <h1 id='restaurantText'> Apply for NoshSpot! </h1>
           <h3 style={{marginTop: '1%'}}id='restaurantText'> Why Sign Up With Us?</h3>
