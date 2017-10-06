@@ -145,6 +145,11 @@
           z-index: 1;
       }
 
+      #marketingText{
+        text-align: center;
+        color: white;
+      }
+
       #restaurantHolder{
         position: fixed;
         top: 12%;
