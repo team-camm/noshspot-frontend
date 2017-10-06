@@ -29,21 +29,76 @@ export default class RestaurantRegistration extends React.Component {
               </div>
             </div>
             <div className="form-group row">
-              <label htmlFor="example-text-input" className="col-2 col-form-label">Full Name</label>
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Restaurant Name</label>
               <div className="col-10">
                 <input className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
-              <label htmlFor="example-text-input" className="col-2 col-form-label">Phone Number</label>
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Address</label>
               <div className="col-10">
                 <input className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
-              <label htmlFor="example-text-input" className="col-2 col-form-label">Default Address</label>
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Phone</label>
               <div className="col-10">
                 <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Hours</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Description</label>
+              <div className="col-10">
+                <textarea className="form-control" type="textarea" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Website</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Yelp URL</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Facebook URL</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Billing Address</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Annual Revenue</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Tags</label>
+              <div className="col-10">
+                <input className="form-control" type="text" id="" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="example-text-input" className="col-2 col-form-label">Image Upload</label>
+              <div className="col-10">
+                <input type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" />
+                <small id="fileHelp" className="form-text text-muted">Upload an image that you would like to associate with your establishment. JPG only.</small>
               </div>
             </div>
             <div className="form-group row" >
