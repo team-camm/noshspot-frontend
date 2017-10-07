@@ -1,10 +1,70 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import {
+    updateEmail,
+    updatePassword,
+    updateFullName,
+    updatePhone,
+    updateAddress,
+    saveRegInfo
+} from './userRegistrationActions';
 
 export default class UserRegistration extends React.Component {
   constructor(props) {
     super(props);
+
+    // this.updateAccount = this.updateAccount.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changeFullName = this.changeFullName.bind(this);
+    this.changePhone = this.changePhone.bind(this);
+    this.changeAddress = this.changeAddress.bind(this);
+    this.saveCustomerInfo = this.saveCustomerInfo.bind(this);
   }
+
+  changeEmail(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updateEmail(value));
+  }
+
+  changePassword(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updatePassword(value));
+  }
+
+  changeFullName(event) {
+    const {dispatch} = this.props;
+    const value = event.target.value;
+    dispatch(updateFullName(value));
+  }
+
+  changePhone(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updatePhone(value));
+  }
+
+  changeAddress(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updateAddress(value));
+  }
+
+  saveCustomerInfo() {
+    const { dispatch } = this.props;
+    const { email, password, fullName, phone, address } = this.props.temp;
+    var regInfo = {
+      email, 
+      password, 
+      fullName, 
+      phone, 
+      address
+    }
+    dispatch(saveRegInfo(regInfo));
+  }
+
   render() {
 
     return (
@@ -46,31 +106,31 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeEmail } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Password</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changePassword } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Full Name</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeFullName } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Phone Number</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changePhone } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Default Address</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeAddress } id="" />
                   </div>
                 </div>
                 <div className="form-group row" >
@@ -104,7 +164,7 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label"></label>
                   <div className="col-10">
-                    <button type="button" className="btn text-white" style={{ "backgroundColor": "rgb(128, 10, 10)"}}><strong>Accept & Continue</strong></button>
+                    <button type="button" className="btn text-white" onClick={ this.saveCustomerInfo } style={{ "backgroundColor": "rgb(128, 10, 10)"}}><strong>Accept & Continue</strong></button>
                   </div>
                 </div>
               </div>

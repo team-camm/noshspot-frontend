@@ -6,7 +6,7 @@ import {
 import LandingPage from './components/LandingPage/index';
 import Confirmation from './components/Confirmation/Confirmation';
 import AccountInfo from './components/AccountInfo/index'
-import UserRegistration from './components/Registration/UserRegistration';
+import UserRegistration from './components/Registration/index';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
 import CustomerMenu from './components/CustomerMenu/CustomerMenu';
 import RestaurantRegistration from './components/RestaurantRegistration/index';
