@@ -9,8 +9,9 @@ import Search from './components/Search/Search';
 import AccountInfo from './components/AccountInfo/index'
 import UserRegistration from './components/Registration/index';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
-import CustomerMenu from './components/CustomerMenu/CustomerMenu';
+import CustomerMenu from './components/CustomerMenu/index';
 import RestaurantRegistration from './components/RestaurantRegistration/index';
+import SearchResults from './components/SearchResults/SearchResults';
 
 export default class App extends React.Component {
   constructor(){
@@ -29,6 +30,7 @@ export default class App extends React.Component {
             <Route path='/restaurantmenu/:id' component={CustomerMenu} />
             <Route path='/restaurant' component={ RestaurantLanding }/>    
             <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
+            <Route path='/search' component={ SearchResults } />
 
 
           </div>
