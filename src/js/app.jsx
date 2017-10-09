@@ -1,16 +1,16 @@
 import React from 'react';
 import { 
   HashRouter as Router, 
-  Route 
+  Route,
 } from 'react-router-dom';
 import LandingPage from './components/LandingPage/index';
 import Confirmation from './components/Confirmation/Confirmation';
+import Search from './components/Search/Search';
 import AccountInfo from './components/AccountInfo/index'
 import UserRegistration from './components/Registration/index';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
 import CustomerMenu from './components/CustomerMenu/CustomerMenu';
 import RestaurantRegistration from './components/RestaurantRegistration/index';
-
 
 export default class App extends React.Component {
   constructor(){
@@ -25,9 +25,11 @@ export default class App extends React.Component {
             <Route path='/confirmation' component={ Confirmation }/>
             <Route path='/account' component={ AccountInfo }/>
             <Route path='/registration' component={ UserRegistration }/>
-            <Route path='/restaurant' component={ RestaurantLanding }/>
-            <Route path='/restaurantmenu' component={CustomerMenu} /> 
+            <Route path='/search' component={ Search } />
+            <Route path='/restaurantmenu/:id' component={CustomerMenu} />
+            <Route path='/restaurant' component={ RestaurantLanding }/>    
             <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
+
 
           </div>
         </Router>
