@@ -2,7 +2,9 @@ import React from 'react';
 import NavBar from '../NavBar/NavBar';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-
+import {
+  getAddress
+} from './landingPageActions';
 import {
   Link
 } from 'react-router-dom';
@@ -49,8 +51,7 @@ export default class LandingPage extends React.Component {
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
         var lat = place.geometry.location.lat();
-        var lng = place.geometry.location.lng();
-        
+        var lng = place.geometry.location.lng();     
         self.setState({
             lat,
             lng
@@ -124,6 +125,7 @@ render() {
             <input placeholder="Enter Location..." type="text" id="locationSearch" onFocus={ this.geolocate } />
             <span id="go" onClick={this.go}>Go</span>
           </div>
+          <p id='goToRestaurantPage'>Are you a restaurant owner?<Link style={{'textDecoration': 'none'}} to='/restaurant' ><span style={{'color': 'skyblue'}}> Click here!</span></Link></p>
         </main>
         
       </div>

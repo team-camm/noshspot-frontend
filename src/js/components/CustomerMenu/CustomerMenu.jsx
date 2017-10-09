@@ -36,15 +36,21 @@ export default class CustomerMenu extends React.Component {
                          But real or not we are still the best out there!
                          </p>
                             <h4 style={{ marginTop: '40px' }}> We deliver from {item.hours} </h4>
+
+
+
+
                         </div>
 
                         <div className='col-sm-6'>
                             <img style={{ width: '100%', height: '100%', marginTop: '40px' }} src='https://pixel.nymag.com/imgs/daily/grub/2016/11/17/17-chipotle-chorizo-burrito.w600.h315.2x.jpg' />
                         </div>
+
                       </div>
                     }
                 })
                 }    
+          
                 </div>
                 <div className='container'>
                     <div className=' row mt-2'>
@@ -86,3 +92,4 @@ export default class CustomerMenu extends React.Component {
     )
     }
 }    
+

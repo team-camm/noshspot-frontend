@@ -7,7 +7,9 @@
     "build": "webpack -w",
     "start": "node server/index.js",
     "less": "lessc src/css/style.less dist/css/style.css",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "webpack",
+    "test": "mocha test"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -57,10 +59,10 @@
     "eslint-plugin-react": "^6.2.0",
     "less": "^2.7.1",
     "less-plugin-autoprefix": "^1.5.1",
-    "mocha": "^3.0.2",
+    "mocha": "^3.5.3",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
     "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.3.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.7"

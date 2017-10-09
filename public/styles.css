@@ -48,13 +48,20 @@
         font-family: 'Viga';
         vertical-align: middle;        
     }
-
+/* Landing Page */
 
     #inputGroup{
         display: flex;
         flex-wrap: nowrap;
         width: 700px;
         box-sizing: border-box;        
+    }
+
+    #restaurantGroup{
+        display: flex;
+        flex-wrap: nowrap;
+        box-sizing: border-box;  
+
     }
     
     #locationSearch{
@@ -90,7 +97,31 @@
          background-size: cover;
      }
 
+     #goToRestaurantPage{
+        position: fixed;
+        top: 94%;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        font-size: 1.25em;
+     }
 
+     /* Restaurant Landing */
+
+     #restaurant{
+        display: flex;
+        height: calc(100vh);
+        justify-content: center;
+        align-items: center;
+        background: url('http://santabarbaraca.com/content/uploads/2015/08/restaurants-santa-barbara.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+     /* https://images-na.ssl-images-amazon.com/images/I/8107ZR0LmzL.jpg */
       main::before{
         content: '';
         position: absolute;
@@ -127,21 +158,31 @@
       }
 
       #marketingText{
+        text-align: center;
+        color: white;
+      }
+
+      #restaurantHolder{
+        position: fixed;
+        top: 12%;
+        width: 100%;
+        z-index: 1;
+    }
+
+      #restaurantText{
           text-align: center;
           color: white;
       }
 
+    /* Account Info */
+
       #accSettings{
-        margin-left: 7%;
-        margin-top: 9%;
-        text-align: center;
-        
+        text-align: left;
       }
 
       #deliveryHistory{
-        margin-left: 7%;
-        margin-top: 15%;
-        text-align: center;
+
+        text-align: left;
         
       }
 
@@ -150,9 +191,7 @@
       }
 
       #deliveryHistory:hover{
-          background-color: lightgrey;
-          border-radius: 4px;
-
+        text-decoration: underline;
       }
 
       #accSettingsDisplay{
@@ -169,6 +208,7 @@
 .row {
     padding-bottom: 1em;
 }
+
 /* Grid */
 .Grid {
     display: flex;
@@ -197,4 +237,5 @@
 	transform: scale(1.025);
 	box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.93);
 }
+
 
