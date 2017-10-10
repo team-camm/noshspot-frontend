@@ -13,6 +13,7 @@ import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding'
 import CustomerMenu from './components/CustomerMenu/index';
 import RestaurantRegistration from './components/RestaurantRegistration/index';
 import SearchResults from './components/SearchResults/SearchResults';
+import RestaurantMenuEdit from './components/RestaurantMenuEdit/RestaurantMenuEdit'
 
 export default class App extends React.Component {
   constructor(){
@@ -33,6 +34,7 @@ export default class App extends React.Component {
             <Route path='/restaurant' component={ RestaurantLanding }/>    
             <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
             <Route path='/searchResults' component={ SearchResults } />
+            <Route path='/restaurantMenuEdit' component={ RestaurantMenuEdit } />
           </div>
         </Router>
       )
