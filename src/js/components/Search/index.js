@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LandingPage from './LandingPage';
+import Search from './Search';
 
 function mapStoreToProps(store) {
     return {
@@ -7,4 +7,4 @@ function mapStoreToProps(store) {
     };
 }
 
-export default connect(mapStoreToProps)(LandingPage);
+export default connect(mapStoreToProps)(Search);

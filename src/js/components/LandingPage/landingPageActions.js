@@ -1,10 +1,10 @@
 export const types = {
-    GET_ADDRESS: 'GET_ADDRESS'
+    RESTAURANTS_NEARBY: 'RESTAURANTS_NEARBY'
 };
 
-export function getAddress (address) {
+export function getNearbyRestaurants (restaurant) {
     return {
-        type: types.GET_ADDRESS,
-        payload: {address}
+        type: types.RESTAURANTS_NEARBY,
+        payload: {restaurant}
     }
 }
