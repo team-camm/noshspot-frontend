@@ -24,14 +24,22 @@ export default class CustomerMenu extends React.Component {
 
     render() {
         const restaurant = this.state.restaurant;
-        console.log(restaurant);
-        var arr = [
-            {name: 'Burrito', price: '7.50'},
-            {name: 'Taco', price: '7.50'},
-            {name: 'Bowl', price: '7.50'},
-            {name: 'Salad', price: '7.50'},
-            {name: 'Chips', price: '7.50'}
-        ]
+        var snippet;
+        if (restaurant.menu) {
+            if (restaurant.menu.length > 0) {
+                snippet = (
+                    restaurant.menu.map( menuItem => {
+                        return <MenuItem key={menuItem.name} menuItem={menuItem} />
+                    })
+                )
+            } else snippet = (
+                <div className='col-sm-6'>
+                    <div style={{ paddingTop: '20px' }} className='row'>
+                        <h4>No Menu Items to Display.</h4>    
+                    </div>
+                </div>
+            )
+        }
     return (
         <div>
             <NavBar />
@@ -56,9 +64,7 @@ export default class CustomerMenu extends React.Component {
                         </div>
                         <div className='container'>
                             <div className='row'>
-                                {arr.map( menuItem => {
-                                    return <MenuItem key={menuItem.name} menuItem={menuItem} />
-                                })}
+                                {snippet}
                             <div style={{ marginTop: '50px' }} className='col-sm-12 text-center'>
                                 <button style={{ backgroundColor: 'rgb(128, 10, 10)', borderColor: 'rgb(128, 10, 10)' }} className='btn btn-primary'>
                                     Proceed to Checkout!
