@@ -12,6 +12,8 @@ import UserRegistration from './components/Registration/index';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
 import CustomerMenu from './components/CustomerMenu/index';
 import RestaurantRegistration from './components/RestaurantRegistration/index';
+import RestaurantMenuEdit from './components/RestaurantMenuEdit/RestaurantMenuEdit'
+
 
 export default class App extends React.Component {
   constructor(){
@@ -31,6 +33,7 @@ export default class App extends React.Component {
             <Route path='/customerMenu/:id' component={CustomerMenu} />
             <Route path='/restaurant' component={ RestaurantLanding }/>    
             <Route path='/restaurantRegistration' component={ RestaurantRegistration }/>
+            <Route path='/restaurantMenuEdit' component={ RestaurantMenuEdit } />
           </div>
         </Router>
       )
