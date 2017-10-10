@@ -32,7 +32,7 @@ export default class App extends React.Component {
             <Route path='/noResultsFound' component={NoResultsFound }  />
             <Route path='/restaurantmenu/:id' component={CustomerMenu} />
             <Route path='/restaurant' component={ RestaurantLanding }/>    
-            <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
+            <Route path='/restaurantRegistration' component={ RestaurantRegistration }/>
             <Route path='/searchResults' component={ SearchResults } />
             <Route path='/restaurantMenuEdit' component={ RestaurantMenuEdit } />
           </div>
