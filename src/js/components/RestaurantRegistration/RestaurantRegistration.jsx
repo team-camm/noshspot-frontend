@@ -17,10 +17,18 @@ import {
   restaurantTags,
   restaurantImg,
 } from './RestaurantRegistrationActions';
+import {
+  Redirect
+} from 'react-router-dom';
 
 export default class RestaurantRegistration extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      redirectToMenuEdit: false
+    }
+
     this.addRestaurant = this.addRestaurant.bind(this);
     this.restaurantEmail = this.restaurantEmail.bind(this);
     this.restaurantPassword = this.restaurantPassword.bind(this);
@@ -39,6 +47,9 @@ export default class RestaurantRegistration extends React.Component {
   }
 
   addRestaurant(){
+    this.setState({
+      redirectToMenuEdit: true
+    })
     const {
       dispatch, 
       email,
@@ -56,7 +67,6 @@ export default class RestaurantRegistration extends React.Component {
       tags,
       img, 
      } = this.props;
-    self = this;
     var resLat = '';
     var resLng = '';
     var geocoder = new google.maps.Geocoder();
@@ -180,7 +190,9 @@ export default class RestaurantRegistration extends React.Component {
 
 
   render() {
-
+    if (this.state.redirectToMenuEdit) {
+      return <Redirect push to='/restaurantMenuEdit' />
+    }
     return (
       <div>
         <NavBar />
