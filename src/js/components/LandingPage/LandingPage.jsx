@@ -4,7 +4,8 @@ import axios from 'axios';
 import { Redirect } from 'react-router';
 import {
   getNearbyRestaurants,
-  deleteRestaurants
+  deleteRestaurants,
+  getAllRestaurants
 } from './landingPageActions';
 import {
   Link
@@ -18,7 +19,6 @@ export default class LandingPage extends React.Component {
     this.state = { 
       address: '101 Broadway, San Diego, CA',
       coords: '',
-      restaurant: [],
       redirectResultsFound: false,
       redirectNoResultsFound: false
     }
@@ -29,13 +29,8 @@ export default class LandingPage extends React.Component {
   }
 
   componentWillMount() {
-        axios.get('http://localhost:3000/api/restaurant')
-          .then(response =>{
-             this.setState({restaurant:response.data});
-          })
-         .catch(error => {
-           console.log('Error fetching and parsing data',error);
-        });
+        const { dispatch } = this.props;
+        dispatch(getAllRestaurants());
   }
 
 handleGoButton(event){
@@ -52,7 +47,7 @@ handleGoButton(event){
 
         var customerLat = this.state.coords.lat;
         var customerLng = this.state.coords.lng;
-        this.state.restaurant.map((restaurant,i) =>{
+        this.props.allRestaurants.map((restaurant,i) =>{
               var restaurantLat = restaurant.lat;
               var restaurantLng = restaurant.lng;
               var miles = getDistance (customerLat,customerLng,restaurantLat,restaurantLng);

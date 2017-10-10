@@ -69,9 +69,9 @@ export default class RestaurantRegistration extends React.Component {
       yelpUrl: yelp,
       facebook,
       paymentAddress: billingAddress,
-      annualRevenue,
+      annualRevenue
     }
-    dispatch(addRestaurant(restaurantInfo))
+    dispatch(addRestaurant(restaurantInfo));
   }
 
   restaurantEmail(event) {
