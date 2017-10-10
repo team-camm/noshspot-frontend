@@ -31,9 +31,8 @@ export default class Search extends React.Component {
   render() {
        var reslist = window.location.hash.split("searchresults=,");
        var itemids = reslist[1].split(",")
-       //console.log(itemids);
        
-    return (
+      return (
         <div>
           <NavBar />
           <div style={{ height: '25px' }}></div>
@@ -49,12 +48,13 @@ export default class Search extends React.Component {
                  //console.log(item._id, itemids[i]);
                  for (var j=0; j<itemids.length; j++) {
                  if (item._id == itemids[j]){
-                   return <div key={item._id} className="Grid-cell">
+                   return (<div key={item._id} className="Grid-cell">
                             <Link to={"/restaurantmenu/"+item._id} style={{color:"#ffffff",textDecoration: 'none'}}>
                              <h5>{item.restaurantName}</h5>
                              {item.hours}
                             </Link>
                           </div>
+                   );
                   }
                  }
                })

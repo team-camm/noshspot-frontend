@@ -5,14 +5,16 @@ export default class CustomerMenu extends React.Component {
     constructor(props) {
     super(props);
     this.state = {
-        restaurant: [],
+        restaurant: {},
     }
     }
 
     componentWillMount() {
-        axios.get('http://localhost:3000/api/restaurant')
+     
+     axios.get('http://localhost:3000/api/restaurant/'+this.props.match.params.id)
           .then(response =>{
              this.setState({restaurant:response.data});
+             console.log(this.state.restaurant)
         })
          .catch(error => {
            console.log('Error fetching and parsing data',error);
@@ -26,25 +28,21 @@ export default class CustomerMenu extends React.Component {
                 <div style={{ 'height': '68px' }}></div>
                 <div className='container'>
                 {
-                 this.state.restaurant.map((item,i) =>{
-                    if (item._id == this.props.match.params.id){
-                        return <div className='row'>
+                    <div className='row'>
                           <div className='col-sm-6'>
-                            <h1 style={{ textAlign: 'center', marginTop: '40px' }}>{item.restaurantName}</h1>
+                            <h1 style={{ textAlign: 'center', marginTop: '40px' }}>{this.state.restaurant.restaurantName}</h1>
                             <p style={{ textAlign: 'left', marginTop: '40px' }}>
                                 We make the best bowls, burritos, and salads. If you want real mexican food you're in the wrong place.
                          But real or not we are still the best out there!
                          </p>
-                            <h4 style={{ marginTop: '40px' }}> We deliver from {item.hours} </h4>
+                            <h4 style={{ marginTop: '40px' }}> We deliver from {this.state.restaurant.hours} </h4>
                         </div>
 
                         <div className='col-sm-6'>
                             <img style={{ width: '100%', height: '100%', marginTop: '40px' }} src='https://pixel.nymag.com/imgs/daily/grub/2016/11/17/17-chipotle-chorizo-burrito.w600.h315.2x.jpg' />
                         </div>
                       </div>
-                    }
-                })
-                }    
+                    }    
                 </div>
                 <div className='container'>
                     <div className=' row mt-2'>

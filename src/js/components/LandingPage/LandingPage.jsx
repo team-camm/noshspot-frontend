@@ -56,8 +56,9 @@ export default class LandingPage extends React.Component {
             lng
         });
       }
-      
-  }
+    
+
+    }
 
 go() {
     
@@ -67,37 +68,29 @@ go() {
     var brohis = this.props.history;
     var cus_lat = this.state.lat;
     var cus_lng = this.state.lng;
-    var geocoder = new google.maps.Geocoder();
-    this.state.restaurant.map((item,i) =>{
-        geocoder.geocode({
-            'address': item.address
-            }, function(results, status) { 
-               var lat = results[0].geometry.location.lat();
-               var lng = results[0].geometry.location.lng();
-               var miles = getDistance (cus_lat,cus_lng,lat,lng);
-               
-               if(miles < 4.0){
+    
+     this.state.restaurant.map((item,i) =>{
+       var lat = parseFloat(item.lat);
+       var lng = parseFloat(item.lng);
+       //console.log(lat,lng)
+       var miles = getDistance (cus_lat,cus_lng,lat,lng);
+       
+        if(miles < 4.0){
                  searchresultsstr = searchresultsstr + "," + item._id;
-                 //console.log(searchresultsstr);
-               }
-             //console.log(loopcounter, res-1);
-             loopcounter = loopcounter + 1;
-
-             if (loopcounter == res ) {
+        }  
+        loopcounter = loopcounter + 1;
+              if(searchresultsstr == '' && loopcounter == res){
+                brohis.push('/noresultfound');
+              }
+            else if (loopcounter == res ) {
                   //console.log ("this is my nearby" , searchresultsstr)
                   brohis.push('/search?searchresults=' + searchresultsstr);
                 
-            }
-               
-        }); 
-      });
-  
-     var rad = function(x) {
-     return x * Math.PI / 180;
-   };
-
-function getDistance (cus_lat,cus_lng,lat,lng) {
-    
+            }    
+             
+     });
+   
+function getDistance (cus_lat,cus_lng,lat,lng) {  
   var R = 6378137; // Earth’s mean radius in meter
   var dLat = rad(lat - cus_lat);
   var dLong = rad(lng - cus_lng);
@@ -109,7 +102,9 @@ function getDistance (cus_lat,cus_lng,lat,lng) {
   d= d.toFixed(2);
   return d/1609; // returns the distance in meter
 };
-
+ function rad (x) {
+     return x * Math.PI / 180;
+}
 }
   
 render() {
@@ -124,8 +119,7 @@ render() {
             <input placeholder="Enter Location..." type="text" id="locationSearch" onFocus={ this.geolocate } />
             <span id="go" onClick={this.go}>Go</span>
           </div>
-        </main>
-        
+        </main> 
       </div>
     )
   }

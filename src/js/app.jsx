@@ -9,6 +9,7 @@ import AccountInfo from './components/AccountInfo/AccountInfo'
 import UserRegistration from './components/Registration/UserRegistration';
 import Search from './components/Search/Search';
 import CustomerMenu from './components/CustomerMenu/CustomerMenu';
+import NoResultFound from './components/noresultfound/noresultfound';
 
 export default class App extends React.Component {
   constructor(){
@@ -24,6 +25,7 @@ export default class App extends React.Component {
             <Route path='/account-info' component={ AccountInfo }/>
             <Route path='/registration' component={ UserRegistration }/>
             <Route path='/search' component={ Search } />
+            <Route path='/noresultfound' component={NoResultFound }  />
             <Route path='/restaurantmenu/:id' component={CustomerMenu} />
           </div>
         </Router>
