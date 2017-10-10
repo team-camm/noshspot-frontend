@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router-dom';
 
-export default class NoResultFound extends React.Component {
+export default class NoResultsFound extends React.Component {
 
     render() {
   return (

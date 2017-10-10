@@ -9,13 +9,19 @@ export default function landingPageReducer (state = defaultState, action) {
 
     switch (type) {
         case (types.RESTAURANTS_NEARBY): {
-            console.log('payload',payload);
             return {
                 ...state,
                 restaurantsNearby: [
                     ...state.restaurantsNearby,
                     payload.restaurant
                 ]
+            }
+            break;
+        }
+
+        case (types.DELETE_RESTAURANTS): {
+            return {
+                restaurantsNearby: []
             }
             break;
         }
