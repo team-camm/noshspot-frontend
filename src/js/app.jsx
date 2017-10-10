@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import LandingPage from './components/LandingPage/index';
 import Confirmation from './components/Confirmation/Confirmation';
+import NoResultFound from './components/noresultfound/noresultfound';
 import Search from './components/Search/index';
 import AccountInfo from './components/AccountInfo/index'
 import UserRegistration from './components/Registration/index';
@@ -27,6 +28,7 @@ export default class App extends React.Component {
             <Route path='/account' component={ AccountInfo }/>
             <Route path='/registration' component={ UserRegistration }/>
             <Route path='/search' component={ Search } />
+            <Route path='/noresultfound' component={NoResultFound }  />
             <Route path='/restaurantmenu/:id' component={CustomerMenu} />
             <Route path='/restaurant' component={ RestaurantLanding }/>    
             <Route path='/restaurant-registration' component={ RestaurantRegistration }/>

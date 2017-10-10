@@ -30,8 +30,6 @@ export default class Search extends React.Component {
    
   render() {
     const { restaurantsNearby } = this.props;
-      //  var reslist = window.location.hash.split("searchresults=,");
-      //  var itemids = reslist[1].split(",");
       return (
         <div>
           <NavBar />

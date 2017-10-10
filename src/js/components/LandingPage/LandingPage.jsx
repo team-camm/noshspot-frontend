@@ -87,57 +87,16 @@ render() {
           </div>
           <p id='goToRestaurantPage'>Are you a restaurant owner?<Link style={{'textDecoration': 'none'}} to='/restaurant' ><span style={{'color': 'skyblue'}}> Click here!</span></Link></p>
         </main>
-        
       </div>
     )
   }
 }
-
-//     this.state = {
-//       lat :'',
-//       lng : '',
-//       
-//     }
-//     
-//   }
-//   
-//   geolocate() {
-//     self = this;
-//       if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(function(position) {
-//           var geolocation = {
-//             lat: position.coords.latitude,
-//             lng: position.coords.longitude
-//           };
-//           var circle = new google.maps.Circle({
-//             center: geolocation,
-//             radius: position.coords.accuracy
-//           });
-//           autocomplete.setBounds(circle.getBounds());
-//         });
-//       }
-//       autocomplete.addListener('place_changed', fillInAddress);
-//       function fillInAddress() {
-//         // Get the place details from the autocomplete object.
-//         var place = autocomplete.getPlace();
-//         var lat = place.geometry.location.lat();
-//         var lng = place.geometry.location.lng();     
-//         self.setState({
-//             lat,
-//             lng
-//         });
-//       }
-      
-//   }
-
-
   
 var rad = function(x) {
     return x * Math.PI / 180;
 };
 
 function getDistance (cus_lat,cus_lng,lat,lng) {
-    
   var R = 6378137; // Earth’s mean radius in meter
   var dLat = rad(lat - cus_lat);
   var dLong = rad(lng - cus_lng);
