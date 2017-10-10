@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>NoshSpot</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://use.fontawesome.com/0c40164c44.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <div id='root'></div>
-        <script>
+        <!-- <script>
         var placeSearch, autocomplete;
         function initAutocomplete() {
-          autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('locationSearch')),
+          autocomplete = new google.maps.places.Autocomplete((document.getElementById('locationSearch')),
             {types: ['geocode']});
             
             
         }
-        
-        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAX3o2RQJ8_4w0tXw0euvrrOLzg9bz9ahk&libraries=places"></script>
         <script src="bundle.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbhiwfH-XcQPTolVpNDse-PppcJWBjDI4&libraries=places&callback=initAutocomplete"
-        async defer></script>
-
     </body>
 </html>
