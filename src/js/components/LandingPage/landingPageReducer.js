@@ -1,17 +1,21 @@
 import { types } from './landingPageActions';
 
 const defaultState = {
-    address: ''
+    restaurantsNearby: []
 };
 
 export default function landingPageReducer (state = defaultState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case (types.GET_ADDRESS): {
+        case (types.RESTAURANTS_NEARBY): {
+            console.log('payload',payload);
             return {
                 ...state,
-                address: payload.address
+                restaurantsNearby: [
+                    ...state.restaurantsNearby,
+                    payload.restaurant
+                ]
             }
             break;
         }
