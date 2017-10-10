@@ -1,7 +1,8 @@
 import { types } from './landingPageActions';
 
 const defaultState = {
-    restaurantsNearby: []
+    restaurantsNearby: [],
+    allRestaurants: []
 };
 
 export default function landingPageReducer (state = defaultState, action) {
@@ -19,8 +20,17 @@ export default function landingPageReducer (state = defaultState, action) {
             break;
         }
 
+        case (types.GET_ALL_RESTAURANTS + '_FULFILLED'): {
+            return {
+                ...state,
+                allRestaurants: payload.result.data
+            }
+            break;
+        }
+
         case (types.DELETE_RESTAURANTS): {
             return {
+                ...state,
                 restaurantsNearby: []
             }
             break;

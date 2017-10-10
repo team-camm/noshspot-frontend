@@ -3,7 +3,8 @@ import CustomerMenu from './CustomerMenu';
 
 function mapStoreToProps(store) {
     return {
-        restaurantInfo: store.menu.restaurant
+        restaurantInfo: store.menu.restaurant,
+        allRestaurants: store.landingPage.allRestaurants
     };
 }
 

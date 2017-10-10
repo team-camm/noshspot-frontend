@@ -91,7 +91,6 @@ export default class RestaurantRegistration extends React.Component {
     dispatch(addRestaurant(restaurantInfo))
         }      
   );    
-     
   }
 
   restaurantEmail(event) {
