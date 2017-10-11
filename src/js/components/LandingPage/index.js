@@ -3,7 +3,8 @@ import LandingPage from './LandingPage';
 
 function mapStoreToProps(store) {
     return {
-        restaurantsNearby: store.landingPage.restaurantsNearby
+        restaurantsNearby: store.landingPage.restaurantsNearby,
+        allRestaurants: store.landingPage.allRestaurants
     };
 }
 

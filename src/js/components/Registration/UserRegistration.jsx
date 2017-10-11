@@ -192,7 +192,7 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label"></label>
                   <div className="col-10">
-                    <Link to='/search'><button type="button" className="btn text-white" onClick={ this.saveCustomerInfo } style={{ "backgroundColor": "rgb(128, 10, 10)", cursor: 'pointer'}}><strong>Accept & Continue</strong></button></Link>
+                    <Link to='/'><button type="button" className="btn text-white" onClick={ this.saveCustomerInfo } style={{ "backgroundColor": "rgb(128, 10, 10)", cursor: 'pointer'}}><strong>Accept & Continue</strong></button></Link>
                   </div>
                 </div>
               </div>

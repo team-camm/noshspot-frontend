@@ -17,10 +17,18 @@ import {
   restaurantTags,
   restaurantImg,
 } from './RestaurantRegistrationActions';
+import {
+  Redirect
+} from 'react-router-dom';
 
 export default class RestaurantRegistration extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      redirectToMenuEdit: false
+    }
+
     this.addRestaurant = this.addRestaurant.bind(this);
     this.restaurantEmail = this.restaurantEmail.bind(this);
     this.restaurantPassword = this.restaurantPassword.bind(this);
@@ -39,6 +47,9 @@ export default class RestaurantRegistration extends React.Component {
   }
 
   addRestaurant(){
+    this.setState({
+      redirectToMenuEdit: true
+    })
     const {
       dispatch, 
       email,
@@ -54,9 +65,22 @@ export default class RestaurantRegistration extends React.Component {
       billingAddress,
       annualRevenue,
       tags,
-      img 
-    } = this.props;
-
+      img, 
+     } = this.props;
+    var resLat = '';
+    var resLng = '';
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+            'address': this.props.address
+            }, function(results, status) {
+              if(status == google.maps.GeocoderStatus.OK) { 
+               var lat = results[0].geometry.location.lat();
+               var lng = results[0].geometry.location.lng();
+               resLat = lat;
+               resLng = lng;
+              } else {
+                 alert('Please type a valid address')
+            }
     const restaurantInfo = {
       email,
       password,
@@ -70,8 +94,13 @@ export default class RestaurantRegistration extends React.Component {
       facebook,
       paymentAddress: billingAddress,
       annualRevenue,
+      lat : resLat,
+      lng : resLng
     }
+    
     dispatch(addRestaurant(restaurantInfo))
+        }      
+  );    
   }
 
   restaurantEmail(event) {
@@ -161,7 +190,9 @@ export default class RestaurantRegistration extends React.Component {
 
 
   render() {
-
+    if (this.state.redirectToMenuEdit) {
+      return <Redirect push to='/restaurantMenuEdit' />
+    }
     return (
       <div>
         <NavBar />
@@ -180,7 +211,7 @@ export default class RestaurantRegistration extends React.Component {
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Password</label>
               <div className="col-10">
-                <input onChange={this.restaurantPassword}className="form-control" type="text" id="" />
+                <input onChange={this.restaurantPassword}className="form-control" type="password" id="" />
               </div>
             </div>
             <div className="form-group row">

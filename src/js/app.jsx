@@ -5,14 +5,15 @@ import {
 } from 'react-router-dom';
 import LandingPage from './components/LandingPage/index';
 import Confirmation from './components/Confirmation/Confirmation';
-import NoResultFound from './components/noresultfound/noresultfound';
+import NoResultsFound from './components/NoResultsFound/NoResultsFound';
 import Search from './components/Search/index';
 import AccountInfo from './components/AccountInfo/index'
 import UserRegistration from './components/Registration/index';
 import RestaurantLanding from './components/RestaurantLanding/RestaurantLanding';
 import CustomerMenu from './components/CustomerMenu/index';
 import RestaurantRegistration from './components/RestaurantRegistration/index';
-import SearchResults from './components/SearchResults/SearchResults';
+import RestaurantMenuEdit from './components/RestaurantMenuEdit/RestaurantMenuEdit'
+
 
 export default class App extends React.Component {
   constructor(){
@@ -28,11 +29,11 @@ export default class App extends React.Component {
             <Route path='/account' component={ AccountInfo }/>
             <Route path='/registration' component={ UserRegistration }/>
             <Route path='/search' component={ Search } />
-            <Route path='/noresultfound' component={NoResultFound }  />
-            <Route path='/restaurantmenu/:id' component={CustomerMenu} />
+            <Route path='/noResultsFound' component={NoResultsFound }  />
+            <Route path='/customerMenu/:id' component={CustomerMenu} />
             <Route path='/restaurant' component={ RestaurantLanding }/>    
-            <Route path='/restaurant-registration' component={ RestaurantRegistration }/>
-            <Route path='/searchResults' component={ SearchResults } />
+            <Route path='/restaurantRegistration' component={ RestaurantRegistration }/>
+            <Route path='/restaurantMenuEdit' component={ RestaurantMenuEdit } />
           </div>
         </Router>
       )

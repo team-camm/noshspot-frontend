@@ -3,7 +3,9 @@ import NavBar from '../NavBar/NavBar';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import {
-  getNearbyRestaurants
+  getNearbyRestaurants,
+  deleteRestaurants,
+  getAllRestaurants
 } from './landingPageActions';
 import {
   Link
@@ -17,8 +19,8 @@ export default class LandingPage extends React.Component {
     this.state = { 
       address: '101 Broadway, San Diego, CA',
       coords: '',
-      restaurant: [],
-      redirect: false
+      redirectResultsFound: false,
+      redirectNoResultsFound: false
     }
 
     this.onChange = (address) => this.setState({ address })
@@ -27,38 +29,46 @@ export default class LandingPage extends React.Component {
   }
 
   componentWillMount() {
-        axios.get('http://localhost:3000/api/restaurant')
-          .then(response =>{
-             this.setState({restaurant:response.data});
-          })
-         .catch(error => {
-           console.log('Error fetching and parsing data',error);
-        });
+        const { dispatch } = this.props;
+        dispatch(getAllRestaurants());
   }
 
 handleGoButton(event){
     event.preventDefault()
+    const {dispatch} = this.props;
+    dispatch(deleteRestaurants());
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.setState({
-          coords: latLng,
-          redirect: true
+          coords: latLng
         })
         console.log('Success', latLng);
 
-        const {dispatch} = this.props;
         var customerLat = this.state.coords.lat;
         var customerLng = this.state.coords.lng;
-        this.state.restaurant.map((restaurant,i) =>{
+        this.props.allRestaurants.map((restaurant,i) =>{
               var restaurantLat = restaurant.lat;
               var restaurantLng = restaurant.lng;
               var miles = getDistance (customerLat,customerLng,restaurantLat,restaurantLng);
 
               if(miles < 4.0){
                 dispatch(getNearbyRestaurants(restaurant))
-              }         
-            });       
+              }
+            }); 
+            const { restaurantsNearby } = this.props;
+            if (restaurantsNearby.length > 0) {
+              this.setState({
+                redirectResultsFound: true,
+                redirectNoResultsFound: false
+              })
+            }   
+            else {
+              this.setState({
+                redirectNoResultsFound: true,
+                redirectResultsFound: false
+              })
+            }  
         })
       .catch(error => console.error('Error', error))
   }
@@ -71,8 +81,10 @@ render() {
   const cssClasses = {
     input: 'locationSearch'
   }
-  if (this.state.redirect) {
+  if (this.state.redirectResultsFound) {
     return <Redirect push to='/search'/>;
+  } else if (this.state.redirectNoResultsFound) {
+    return <Redirect push to='/noResultsFound'/>;
   }
   return (
       <div>

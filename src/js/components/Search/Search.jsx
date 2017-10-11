@@ -2,34 +2,33 @@ import React from 'react';
 import NavBar from '../NavBar/NavBar';
 import axios from 'axios';
 import { 
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 export default class Search extends React.Component {
-    constructor(props) {
-    super(props);
-    this.state = {
-        restaurant: [],
-    }
-    this.search = this.search.bind(this);
-    }
+        constructor(props) {
+        super(props);
 
-    componentWillMount() {
-        axios.get('http://localhost:3000/api/restaurant')
-          .then(response =>{
-             this.setState({restaurant:response.data});
-        })
-         .catch(error => {
-           console.log('Error fetching and parsing data',error);
-        });
-    }
+        this.state = {
+            redirectToMenu: false,
+            id: ''
+        }
 
-    search(){
-       
-        console.log('result')
+        this.goToMenu = this.goToMenu.bind(this);
     }
    
+    goToMenu(id) {
+        this.setState({
+            redirectToMenu: true,
+            id
+        })
+    }
+
   render() {
     const { restaurantsNearby } = this.props;
+    if (this.state.redirectToMenu) {
+        return <Redirect push to={'/customerMenu/' + this.state.id} />
+    }
       return (
         <div>
           <NavBar />
@@ -42,7 +41,7 @@ export default class Search extends React.Component {
               <div className='row'>
               {restaurantsNearby.map(restaurant => {
                   return (
-                      <SearchResult key={restaurant._id} restaurant={restaurant}/>
+                      <SearchResult key={restaurant._id} restaurant={restaurant} goToMenu={this.goToMenu}/>
                   )
               })}
               </div>
@@ -58,12 +57,13 @@ class SearchResult extends React.Component {
         const name = this.props.restaurant.restaurantName;
         const desc = this.props.restaurant.restaurantDesc;
         const hours = this.props.restaurant.hours;
+        const id = this.props.restaurant._id;
         return (
-            <div className='card col-md-4' style={{ display: 'inline-block',height: 0, paddingBottom: '25%', borderColor: 'rgb(128, 10, 10)'}}>
+            <div onClick={() => this.props.goToMenu(id)} className='card col-md-4' style={{ cursor: 'pointer', display: 'inline-block',height: 0, paddingBottom: '25%', borderColor: 'rgb(128, 10, 10)'}}>
                 <div className='card-body text-center mt-2'>
-                    <div className='card-title'>{name}</div>
-                    {/* <div className='card-text'>{desc}</div> */}
-                    <div className='card-text'><small>{hours}</small></div>
+                    <div className='card-title'><strong>{name}</strong></div>
+                    <div className='card-text'>{desc}</div>
+                    <div className='card-text'><small>{`Hours: ${hours}`}</small></div>
                 </div>
             </div>
         )
