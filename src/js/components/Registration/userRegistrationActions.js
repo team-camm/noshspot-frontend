@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const types = {
     SAVE_REG_INFO: 'SAVE_REG_INFO',
+    LOGIN_USER: 'LOGIN_USER',
     UPDATE_REG_PASSWORD: "UPDATE_REG_PASSWORD",
     UPDATE_REG_FULLNAME: 'UPDATE_REG_FULLNAME',
     UPDATE_REG_EMAIL: 'UPDATE_REG_EMAIL',
@@ -28,6 +29,13 @@ export function saveRegInfo(info) {
                     // }
             })
             .catch( err => console.log(err))
+        }
+}
+
+export function logInUser(info) {
+    return {
+        type: types.LOGIN_USER,
+        payload: info
         }
 }
 

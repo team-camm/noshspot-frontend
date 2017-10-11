@@ -22,14 +22,19 @@ import {
   restaurantTags,
   restaurantImg,
 } from './RestaurantRegistrationActions';
+import {
+  Redirect
+} from 'react-router-dom';
 
 export default class RestaurantRegistration extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
             redirectToMenu: false,
-            restaurant: []
+            
     }       
+
     this.addRestaurant = this.addRestaurant.bind(this);
     this.restaurantEmail = this.restaurantEmail.bind(this);
     this.restaurantPassword = this.restaurantPassword.bind(this);
@@ -46,18 +51,8 @@ export default class RestaurantRegistration extends React.Component {
     this.restaurantTags = this.restaurantTags.bind(this);
     this.restaurantImg = this.restaurantImg.bind(this);
   }
-  
-  /* componentWillMount() {
-        axios.get('http://www.yaddress.net/api/address')
-          .then(response =>{
-             this.setState({restaurant:response.data});
-          })
-         .catch(error => {
-           console.log('Error fetching and parsing data',error);
-        });
-    }*/
-
   addRestaurant(){
+   
     const {
       dispatch, 
       email,
@@ -75,7 +70,6 @@ export default class RestaurantRegistration extends React.Component {
       tags,
       img, 
      } = this.props;
-    self = this;
     var resLat = '';
     var resLng = '';
     var geocoder = new google.maps.Geocoder();
@@ -206,9 +200,11 @@ export default class RestaurantRegistration extends React.Component {
 
 
   render() {
+
         if (this.state.redirectToMenu) {
            return <Redirect push to={'/restaurantMenuEdit'} />
          }
+
     return (
       <div>
         <NavBar />

@@ -1,20 +1,26 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import { Redirect } from 'react-router';
 import {
     updateEmail,
     updatePassword,
     updateFullName,
     updatePhone,
     updateAddress,
-    saveRegInfo
+    saveRegInfo,
+    logInUser
 } from './userRegistrationActions';
 import {
   Link
 } from 'react-router-dom';
+import axios from 'axios';
 
 export default class UserRegistration extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { 
+      redirect: false
+    }
 
     // this.updateAccount = this.updateAccount.bind(this);
     this.changePassword = this.changePassword.bind(this);
@@ -23,6 +29,7 @@ export default class UserRegistration extends React.Component {
     this.changePhone = this.changePhone.bind(this);
     this.changeAddress = this.changeAddress.bind(this);
     this.saveCustomerInfo = this.saveCustomerInfo.bind(this);
+    this.logIn = this.logIn.bind(this);
   }
 
   changeEmail(event) {
@@ -68,8 +75,26 @@ export default class UserRegistration extends React.Component {
     dispatch(saveRegInfo(regInfo));
   }
 
-  render() {
+  logIn() {
+    const { dispatch } = this.props;
+    const { email, password } = this.props.temp;
+    var logInInfo = {
+      email, 
+      password
+    }
+    axios.post('http://localhost:3000/login', logInInfo)
+      .then(user => {
+        console.log(user);
+        this.setState({
+          redirect: true
+        });
+      })
+    }
 
+  render() {
+    if (this.state.redirect) {
+      return <Redirect push to='/'/>;
+    }
     return (
       <div>
         <NavBar />
@@ -85,19 +110,19 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeEmail } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Password</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changePassword } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label"></label>
                   <div className="col-10">
-                    <Link to='/'><button type="button" className="btn text-white" style={{ "backgroundColor": "rgb(128, 10, 10)", cursor: 'pointer'}}><strong>Log In</strong></button></Link>
+                    <button type="button" className="btn text-white" onClick={ this.logIn } style={{ "backgroundColor": "rgb(128, 10, 10)", cursor: 'pointer'}}><strong>Log In</strong></button>
                   </div>
                 </div> 
               </div>
