@@ -66,7 +66,7 @@ export default class CustomerMenu extends React.Component {
                             <div className='row'>
                                 {snippet}
                             <div style={{ marginTop: '50px' }} className='col-sm-12 text-center'>
-                                <button style={{ backgroundColor: 'rgb(128, 10, 10)', borderColor: 'rgb(128, 10, 10)' }} className='btn btn-primary'>
+                                <button style={{ backgroundColor: 'rgb(128, 10, 10)', borderColor: 'rgb(128, 10, 10)', cursor: 'pointer' }} className='btn btn-primary'>
                                     Proceed to Checkout!
                                     </button>
                             </div>
