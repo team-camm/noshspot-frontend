@@ -1,5 +1,10 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import axios from 'axios';
+import { 
+  Redirect
+} from 'react-router-dom';
 import {
   addRestaurant,
   restaurantEmail,
@@ -21,6 +26,10 @@ import {
 export default class RestaurantRegistration extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+            redirectToMenu: false,
+            restaurant: []
+    }       
     this.addRestaurant = this.addRestaurant.bind(this);
     this.restaurantEmail = this.restaurantEmail.bind(this);
     this.restaurantPassword = this.restaurantPassword.bind(this);
@@ -37,6 +46,16 @@ export default class RestaurantRegistration extends React.Component {
     this.restaurantTags = this.restaurantTags.bind(this);
     this.restaurantImg = this.restaurantImg.bind(this);
   }
+  
+  /* componentWillMount() {
+        axios.get('http://www.yaddress.net/api/address')
+          .then(response =>{
+             this.setState({restaurant:response.data});
+          })
+         .catch(error => {
+           console.log('Error fetching and parsing data',error);
+        });
+    }*/
 
   addRestaurant(){
     const {
@@ -63,14 +82,11 @@ export default class RestaurantRegistration extends React.Component {
     geocoder.geocode({
             'address': this.props.address
             }, function(results, status) {
-              if(status == google.maps.GeocoderStatus.OK) { 
+              if(status == google.maps.GeocoderStatus.OK) {  
                var lat = results[0].geometry.location.lat();
                var lng = results[0].geometry.location.lng();
                resLat = lat;
                resLng = lng;
-              } else {
-                 alert('Please type a valid address')
-            }
     const restaurantInfo = {
       email,
       password,
@@ -89,8 +105,18 @@ export default class RestaurantRegistration extends React.Component {
     }
     
     dispatch(addRestaurant(restaurantInfo))
+    self.setState({
+            redirectToMenu: true,
+        })
+        } else {
+                self.setState({
+                   redirectToMenu: false,
+                 })
+                 alert('Please type a valid address')
+                 
+            }
         }      
-  );    
+  );   
   }
 
   restaurantEmail(event) {
@@ -180,7 +206,9 @@ export default class RestaurantRegistration extends React.Component {
 
 
   render() {
-
+        if (this.state.redirectToMenu) {
+           return <Redirect push to={'/restaurantMenuEdit'} />
+         }
     return (
       <div>
         <NavBar />
@@ -211,7 +239,7 @@ export default class RestaurantRegistration extends React.Component {
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Address</label>
               <div className="col-10">
-                <input onChange={this.restaurantAddress}className="form-control" type="text" id="" />
+                <input onChange={this.restaurantAddress} className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
