@@ -43,7 +43,7 @@ handleGoButton(event){
         this.setState({
           coords: latLng
         })
-        console.log('Success', latLng);
+        //console.log('Success', latLng);
 
         var customerLat = this.state.coords.lat;
         var customerLng = this.state.coords.lng;
