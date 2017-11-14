@@ -22,9 +22,6 @@ import {
   restaurantTags,
   restaurantImg,
 } from './RestaurantRegistrationActions';
-import {
-  Redirect
-} from 'react-router-dom';
 
 export default class RestaurantRegistration extends React.Component {
   constructor(props) {
@@ -52,7 +49,7 @@ export default class RestaurantRegistration extends React.Component {
     this.restaurantImg = this.restaurantImg.bind(this);
   }
   addRestaurant(){
-   
+    const self = this;
     const {
       dispatch, 
       email,
