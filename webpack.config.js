@@ -12,6 +12,8 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
   },
 
+  devtool: 'source-map',
+  
   resolve: {
     alias: {
       react: path.join(__dirname, 'node_modules', 'react')
@@ -30,6 +32,9 @@ module.exports = {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]',
       },
+      { test: /.(png|jpg)$/, 
+        loader: 'url-loader?limit=8192' 
+      }
     ],
   },
 };

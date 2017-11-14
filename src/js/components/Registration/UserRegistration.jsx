@@ -1,12 +1,100 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import { Redirect } from 'react-router';
+import {
+    updateEmail,
+    updatePassword,
+    updateFullName,
+    updatePhone,
+    updateAddress,
+    saveRegInfo,
+    logInUser
+} from './userRegistrationActions';
+import {
+  Link
+} from 'react-router-dom';
+import axios from 'axios';
 
 export default class UserRegistration extends React.Component {
   constructor(props) {
     super(props);
-  }
-  render() {
+    this.state = { 
+      redirect: false
+    }
 
+    // this.updateAccount = this.updateAccount.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changeFullName = this.changeFullName.bind(this);
+    this.changePhone = this.changePhone.bind(this);
+    this.changeAddress = this.changeAddress.bind(this);
+    this.saveCustomerInfo = this.saveCustomerInfo.bind(this);
+    this.logIn = this.logIn.bind(this);
+  }
+
+  changeEmail(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updateEmail(value));
+  }
+
+  changePassword(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updatePassword(value));
+  }
+
+  changeFullName(event) {
+    const {dispatch} = this.props;
+    const value = event.target.value;
+    dispatch(updateFullName(value));
+  }
+
+  changePhone(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updatePhone(value));
+  }
+
+  changeAddress(event) {
+      const {dispatch} = this.props;
+      const value = event.target.value;
+      dispatch(updateAddress(value));
+  }
+
+  saveCustomerInfo() {
+    const { dispatch } = this.props;
+    const { email, password, fullName, phone, address } = this.props.temp;
+    var regInfo = {
+      email, 
+      password, 
+      fullName, 
+      phone, 
+      address
+    }
+    dispatch(saveRegInfo(regInfo));
+  }
+
+  logIn() {
+    const { dispatch } = this.props;
+    const { email, password } = this.props.temp;
+    var logInInfo = {
+      email, 
+      password
+    }
+    axios.post('http://localhost:3000/login', logInInfo)
+      .then(user => {
+        console.log(user);
+        this.setState({
+          redirect: true
+        });
+      })
+    }
+
+  render() {
+    if (this.state.redirect) {
+      return <Redirect push to='/'/>;
+    }
     return (
       <div>
         <NavBar />
@@ -22,19 +110,19 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeEmail } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Password</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changePassword } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label"></label>
                   <div className="col-10">
-                    <button type="button" className="btn text-white" style={{ "backgroundColor": "rgb(128, 10, 10)"}}><strong>Log In</strong></button>
+                    <button type="button" className="btn text-white" onClick={ this.logIn } style={{ "backgroundColor": "rgb(128, 10, 10)", cursor: 'pointer'}}><strong>Log In</strong></button>
                   </div>
                 </div> 
               </div>
@@ -46,31 +134,31 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeEmail } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Password</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changePassword } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Full Name</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeFullName } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Phone Number</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changePhone } id="" />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label">Default Address</label>
                   <div className="col-10">
-                    <input className="form-control" type="text" id="" />
+                    <input className="form-control" type="text" onChange={ this.changeAddress } id="" />
                   </div>
                 </div>
                 <div className="form-group row" >
@@ -104,7 +192,7 @@ export default class UserRegistration extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="example-text-input" className="col-2 col-form-label"></label>
                   <div className="col-10">
-                    <button type="button" className="btn text-white" style={{ "backgroundColor": "rgb(128, 10, 10)"}}><strong>Accept & Continue</strong></button>
+                    <Link to='/'><button type="button" className="btn text-white" onClick={ this.saveCustomerInfo } style={{ "backgroundColor": "rgb(128, 10, 10)", cursor: 'pointer'}}><strong>Accept & Continue</strong></button></Link>
                   </div>
                 </div>
               </div>

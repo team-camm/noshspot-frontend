@@ -1,110 +1,308 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import axios from 'axios';
+import { 
+  Redirect
+} from 'react-router-dom';
+import {
+  addRestaurant,
+  restaurantEmail,
+  restaurantPassword,
+  restaurantPhone,
+  restaurantAddress,
+  restaurantName,
+  restaurantHours,
+  restaurantDescription,
+  restaurantWebsite,
+  restaurantYelp,
+  restaurantFacebook,
+  restaurantBillingAddress,
+  restaurantAnnualRevenue,
+  restaurantTags,
+  restaurantImg,
+} from './RestaurantRegistrationActions';
+import {
+  Redirect
+} from 'react-router-dom';
 
 export default class RestaurantRegistration extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+            redirectToMenu: false,
+            
+    }       
+
+    this.addRestaurant = this.addRestaurant.bind(this);
+    this.restaurantEmail = this.restaurantEmail.bind(this);
+    this.restaurantPassword = this.restaurantPassword.bind(this);
+    this.restaurantPhone = this.restaurantPhone.bind(this);
+    this.restaurantAddress = this.restaurantAddress.bind(this);
+    this.restaurantName = this.restaurantName.bind(this);
+    this.restaurantHours = this.restaurantHours.bind(this);
+    this.restaurantDescription = this.restaurantDescription.bind(this);
+    this.restaurantWebsite = this.restaurantWebsite.bind(this);
+    this.restaurantYelp = this.restaurantYelp.bind(this);
+    this.restaurantFacebook = this.restaurantFacebook.bind(this);
+    this.restaurantBillingAddress = this.restaurantBillingAddress.bind(this);
+    this.restaurantAnnualRevenue = this.restaurantAnnualRevenue.bind(this);
+    this.restaurantTags = this.restaurantTags.bind(this);
+    this.restaurantImg = this.restaurantImg.bind(this);
   }
+  addRestaurant(){
+   
+    const {
+      dispatch, 
+      email,
+      password,
+      phone,
+      address,
+      restaurantName,
+      hours,
+      description,
+      website,
+      yelp,
+      facebook,
+      billingAddress,
+      annualRevenue,
+      tags,
+      img, 
+     } = this.props;
+    var resLat = '';
+    var resLng = '';
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+            'address': this.props.address
+            }, function(results, status) {
+              if(status == google.maps.GeocoderStatus.OK) {  
+               var lat = results[0].geometry.location.lat();
+               var lng = results[0].geometry.location.lng();
+               resLat = lat;
+               resLng = lng;
+    const restaurantInfo = {
+      email,
+      password,
+      phone,
+      address,
+      restaurantName,
+      hours,
+      restaurantDesc: description,
+      website,
+      yelpUrl: yelp,
+      facebook,
+      paymentAddress: billingAddress,
+      annualRevenue,
+      lat : resLat,
+      lng : resLng
+    }
+    
+    dispatch(addRestaurant(restaurantInfo))
+    self.setState({
+            redirectToMenu: true,
+        })
+        } else {
+                self.setState({
+                   redirectToMenu: false,
+                 })
+                 alert('Please type a valid address')
+                 
+            }
+        }      
+  );   
+  }
+
+  restaurantEmail(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantEmail(value));
+  }
+
+  restaurantPassword(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantPassword(value));
+  }
+
+  restaurantPhone(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantPhone(value));
+  }
+
+  restaurantAddress(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantAddress(value));
+  }
+
+  restaurantName(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantName(value));
+  }
+
+  restaurantHours(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantHours(value));
+  }
+
+  restaurantDescription(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantDescription(value));
+  }
+
+  restaurantWebsite(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantWebsite(value));
+  }
+
+  restaurantYelp(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantYelp(value));
+  }
+
+  restaurantFacebook(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantFacebook(value));
+  }
+
+  restaurantBillingAddress(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantBillingAddress(value));
+  }
+
+  restaurantAnnualRevenue(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantAnnualRevenue(value));
+  }
+
+  restaurantTags(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantTags(value));
+  }
+
+  restaurantImg(event) {
+    const { dispatch } = this.props;
+    const value = event.target.value;
+    dispatch(restaurantImg(value));
+  }
+
+
+
   render() {
+
+        if (this.state.redirectToMenu) {
+           return <Redirect push to={'/restaurantMenuEdit'} />
+         }
 
     return (
       <div>
         <NavBar />
-        <div style={{ 'height': '68px'}}></div>
+        <div style={{ 'height': '68px' }}></div>
         <div className='container'>
           <p />
           <h2> Restaurant Information </h2>
           <p />
-          <div className='container' style={{ 'padding': '1em'}}>
+          <div className='container' style={{ 'padding': '1em' }}>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Email</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantEmail}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Password</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantPassword}className="form-control" type="password" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Restaurant Name</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantName}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Address</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantAddress} className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Phone</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantPhone}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Hours</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantHours}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Description</label>
               <div className="col-10">
-                <textarea className="form-control" type="textarea" id="" />
+                <textarea onChange={this.restaurantDescription}className="form-control" type="textarea" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Website</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantWebsite}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Yelp URL</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantYelp}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Facebook URL</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantFacebook}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Billing Address</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantBillingAddress}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Annual Revenue</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantAnnualRevenue}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Tags</label>
               <div className="col-10">
-                <input className="form-control" type="text" id="" />
+                <input onChange={this.restaurantTags}className="form-control" type="text" id="" />
               </div>
             </div>
             <div className="form-group row">
               <label htmlFor="example-text-input" className="col-2 col-form-label">Image Upload</label>
               <div className="col-10">
-                <input type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" />
+                <input onChange={this.restaurantImg}type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" />
                 <small id="fileHelp" className="form-text text-muted">Upload an image that you would like to associate with your establishment. JPG only.</small>
               </div>
             </div>
             <div className="form-group row" >
               <label htmlFor="termsAndConditions" className="col-2 col-form-label">Terms & Conditions</label>
               <div className="col-10">
-                <div style={{ "height":"15em", "border":"1px solid #ccc", "overflow":"auto" }}>
+                <div style={{ "height": "15em", "border": "1px solid #ccc", "overflow": "auto" }}>
                   <p>The standard Lorem Ipsum passage, used since the 1500s</p>
 
                   <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
@@ -128,8 +326,8 @@ export default class RestaurantRegistration extends React.Component {
               </div>
             </div>
             <div className="text-center">
-              <button type="button" className="btn text-white" style={{ "backgroundColor": "rgb(128, 10, 10)"}}><strong>Accept & Continue</strong></button>
-            </div> 
+              <button onClick={this.addRestaurant}type="button" className="btn text-white" style={{ "backgroundColor": "rgb(128, 10, 10)" }}><strong>Accept & Continue</strong></button>
+            </div>
           </div>
         </div>
       </div>

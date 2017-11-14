@@ -48,13 +48,13 @@
         font-family: 'Viga';
         vertical-align: middle;        
     }
-
+/* Landing Page */
 
     #inputGroup{
         display: flex;
         flex-wrap: nowrap;
         width: 700px;
-        box-sizing: border-box;        
+        box-sizing: border-box;      
     }
 
     #restaurantGroup{
@@ -64,7 +64,7 @@
 
     }
     
-    #locationSearch{
+    .locationSearch{
         box-sizing: border-box;
         flex: 8;     
         height: 60px;
@@ -76,9 +76,12 @@
         border-right: none;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        z-index: 1;
-        padding-left: 15px;
-        
+        z-index: 2;
+        padding-left: 15px;   
+    }
+
+    #PlacesAutocomplete__root{
+        z-index: 2;
     }
     
     #locationSearch::placeholder{
@@ -96,6 +99,18 @@
          -o-background-size: cover;
          background-size: cover;
      }
+
+     #goToRestaurantPage{
+        position: fixed;
+        top: 94%;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        font-size: 1.25em;
+     }
+
+     /* Restaurant Landing */
 
      #restaurant{
         display: flex;
@@ -136,6 +151,8 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         z-index: 1;
+        text-decoration: none;
+        padding: 0 1%;
       }
 
       #marketingHolder{
@@ -196,4 +213,34 @@
 .row {
     padding-bottom: 1em;
 }
+
+/* Grid */
+.Grid {
+    display: flex;
+  }
+  
+  .Grid-cell {
+    flex: 1;
+    margin: 1%;
+    background: #3e3e3e;
+    color: #ffffff;
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    border-top: 3px solid #ababab;
+    border-bottom: 3px solid #ababab;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.53);
+    -webkit-box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.53);
+  }
+
+  .Grid-cell:hover {
+	cursor: pointer;
+	transform: scale(1.025);
+	box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.93);
+}
+
 
