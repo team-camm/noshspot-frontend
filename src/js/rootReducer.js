@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import landingPageReducer from './components/LandingPage/landingPageReducer';
-import accountInfoReducer from './components/AccountInfo/accountInforeducer';
+import accountInfoReducer from './components/AccountInfo/accountInfoReducer';
 import userRegistrationReducer from './components/Registration/userRegistrationReducer';
 import newRestaurantReducer from './components/RestaurantRegistration/RestaurantRegistrationReducer';
 import customerMenuReducer from './components/CustomerMenu/customerMenuReducer';
