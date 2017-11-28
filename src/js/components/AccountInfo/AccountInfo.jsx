@@ -79,7 +79,7 @@ export default class AccountInfo extends React.Component {
             snippet = 
                 <div className="card-block">
                     <p />
-                    <h4> Change Personal Information </h4>
+                    <h4> Update Personal Information </h4>
                     <p />
                     <div className='container' style={{ 'padding': '1em' }}>
                         <div style={{ marginBottom: '3%' }} className="form-group row">
