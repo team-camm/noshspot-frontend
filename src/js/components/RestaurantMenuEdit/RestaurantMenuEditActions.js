@@ -7,7 +7,7 @@ export const types = {
 // export function addRestaurant(restaurantInfo) {
 //     return {
 //         type: types.ADD_RESTAURANT,
-//         payload: axios.post("http://localhost:3000/api/restaurant/new", restaurantInfo) 
+//         payload: axios.post("http://noshspot-backend.herokuapp.com/api/restaurant/new", restaurantInfo) 
 //             .then( restaurant => {
 //                 return { 
 //                     restaurant

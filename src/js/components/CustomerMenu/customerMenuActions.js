@@ -7,7 +7,7 @@ export const types = {
 export function getRestaurantInfo (id) {
     return {
         type: types.GET_RESTAURANT_INFO,
-        payload: axios.get('http://localhost:8080/api/restaurant/' + id)
+        payload: axios.get('http://noshspot-backend.herokuapp.com/api/restaurant/' + id)
                     .then( restaurant => {
                         return { restaurant }
                     })

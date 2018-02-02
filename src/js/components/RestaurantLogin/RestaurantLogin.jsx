@@ -32,7 +32,7 @@ export default class restaurantLogin extends React.Component {
       email, 
       password
     }
-    axios.post('http://localhost:3000/api/restaurant/restaurantLogin', logInInfo)
+    axios.post('http://noshspot-backend.herokuapp.com/api/restaurant/restaurantLogin', logInInfo)
       .then(user => {
         console.log(user);
         this.setState({

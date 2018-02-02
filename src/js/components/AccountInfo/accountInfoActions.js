@@ -11,7 +11,7 @@ export const types = {
 export function updateAccountInfo(info, id) {
     return {
         type: types.UPDATE_ACCOUNT_INFO,
-        payload: axios.put("http://localhost:3000/api/customer/" + '59d54bfc599f3936e4bf389f',info) 
+        payload: axios.put("http://noshspot-backend.herokuapp.com/api/customer/" + '59d54bfc599f3936e4bf389f',info) 
             .then( customer => {
                 return { 
                     customer,

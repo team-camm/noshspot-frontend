@@ -82,7 +82,7 @@ export default class UserRegistration extends React.Component {
       email, 
       password
     }
-    axios.post('http://localhost:3000/login', logInInfo)
+    axios.post('http://noshspot-backend.herokuapp.com/login', logInInfo)
       .then(user => {
         console.log(user);
         this.setState({

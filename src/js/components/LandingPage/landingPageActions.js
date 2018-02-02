@@ -22,7 +22,7 @@ export function deleteRestaurants () {
 export function getAllRestaurants() {
     return {
         type: types.GET_ALL_RESTAURANTS,
-        payload: axios.get('http://localhost:3000/api/restaurant')
+        payload: axios.get('https://noshspot-backend.herokuapp.com/api/restaurant')
                     .then(result =>{
                         return { result }
                     })

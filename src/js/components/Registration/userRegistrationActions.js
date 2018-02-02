@@ -13,7 +13,7 @@ export const types = {
 export function saveRegInfo(info) {
     return {
         type: types.SAVE_REG_INFO,
-        payload: axios.post("http://localhost:3000/api/customer/new", info) 
+        payload: axios.post("http://noshspot-backend.herokuapp.com/api/customer/new", info) 
             .then( customer => {
               // console.log(customer);
                 return { 
