@@ -94,7 +94,7 @@ render() {
         </div>
         <main>
           <div id="inputGroup">            
-              <PlacesAutocomplete id='locationSearch' classNames={cssClasses} inputProps={inputProps} />
+              <PlacesAutocomplete id='locationSearch' classNames={cssClasses} inputProps={inputProps} googleLogo={false} />
               <span id='go' onClick={this.handleGoButton} style={{cursor: 'pointer'}}>Search for Food!</span>
           </div>
           <p id='goToRestaurantPage'>Are you a restaurant owner?<Link style={{'textDecoration': 'none'}} to='/restaurant' ><span style={{'color': 'skyblue'}}> Click here!</span></Link></p>
