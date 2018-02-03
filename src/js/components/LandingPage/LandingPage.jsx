@@ -17,7 +17,7 @@ export default class LandingPage extends React.Component {
     super(props);
 
     this.state = { 
-      address: '101 Broadway, San Diego, CA',
+      address: 'San Diego, CA',
       coords: '',
       redirectResultsFound: false,
       redirectNoResultsFound: false
@@ -76,7 +76,7 @@ handleGoButton(event){
 render() {
   const inputProps = {
       value: this.state.address,
-      onChange: this.onChange,
+      onChange: this.onChange
     }
   const cssClasses = {
     input: 'locationSearch'
